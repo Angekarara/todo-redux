@@ -17,7 +17,7 @@ function ToDo() {
     }
   };
 
-  const handleDeleteTask = () => {
+  const handleDeleteTask = (index) => {
     dispatch(deleteTask(index));
   };
 
@@ -37,13 +37,13 @@ function ToDo() {
       </form>
       <div>
         {tasks.map((task, index) => (
-          <div key={index}>
+          <div key={index} className="flex">
             <p>{task.text}</p>
+            <button onClick={() => handleDeleteTask(index)}>
+              <FaTrash className="text-red-500" />
+            </button>
           </div>
         ))}
-        <button onClick={() => handleDeleteTask(index)}>
-          <FaTrash className="text-red-500" />
-        </button>
       </div>
     </div>
   );
