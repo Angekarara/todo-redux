@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import ToDo from './component/ToDo'
+import ToDo from "./component/ToDo";
 
 function App() {
   return (
     <>
-      <ToDo/>
+      <ToDo />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

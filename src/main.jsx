@@ -4,16 +4,18 @@ import App from "./App.jsx";
 import "./index.css";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
+import { toDoListReducer } from "./features/toDoList.jsx";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    task: toDoListReducer,
+  },
 });
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </StrictMode>
 );
