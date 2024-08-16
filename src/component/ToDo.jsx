@@ -1,37 +1,48 @@
 import React, { useState } from "react";
 import { FaTrash } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
-import  { addTask } from "../features/toDoList";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { addTask, deleteTask } from "../features/toDoList";
+import { useDispatch, useSelector } from "react-redux";
 
 function ToDo() {
   const [toDos, setToDos] = useState("");
-  const task = useSelector((state) => state.task.value);
+  const tasks = useSelector((state) => state.task.value);
   const dispatch = useDispatch();
+
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    if (toDos.trim()) {
+      dispatch(addTask({ text: toDos }));
+      setToDos("");
+    }
+  };
+
+  const handleDeleteTask = () => {
+    dispatch(deleteTask(index));
+  };
 
   return (
     <div className="flex-col h-screen flex items-center justify-center ">
       <h1 className="text-[200px] text-center text-[#eaeaea]">Todos</h1>
-      <form className="">
+      <form className="" onSubmit={handleAddTask}>
         <input
           type="text"
           onChange={(event) => setToDos(event.target.value)}
-          value={task.text}
+          value={toDos}
           className="border border-gray-400 rounded-md w-[1000px] p-7"
         />
-        <button
-          onClick={() => {
-            dispatch(addTask);
-          }}
-        >
+        <button>
           <FaPlus className="bg-[#008d8c] text-white rounded-full font-bold text-3xl" />
         </button>
       </form>
       <div>
-        <p>{task.text}</p>
-        <button>
-          <FaTrash className="text-red-500 hidden" />
+        {tasks.map((task, index) => (
+          <div key={index}>
+            <p>{task.text}</p>
+          </div>
+        ))}
+        <button onClick={() => handleDeleteTask(index)}>
+          <FaTrash className="text-red-500" />
         </button>
       </div>
     </div>
