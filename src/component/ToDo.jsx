@@ -35,9 +35,9 @@ function ToDo() {
           <FaPlus className="bg-[#008d8c] text-white rounded-full font-bold text-3xl" />
         </button>
       </form>
-      <div>
+      <div className="mt-5">
         {tasks.map((task, index) => (
-          <div key={index} className="flex">
+          <div key={index} className="flex items-center space-x-2">
             <p>{task.text}</p>
             <button onClick={() => handleDeleteTask(index)}>
               <FaTrash className="text-red-500" />
