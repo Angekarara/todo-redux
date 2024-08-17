@@ -40,7 +40,7 @@ function ToDo() {
           <div key={index} className="flex items-center space-x-2">
             <p>{task.text}</p>
             <button onClick={() => handleDeleteTask(index)}>
-              <FaTrash className="text-red-500" />
+              <FaTrash className="text-red-400" />
             </button>
           </div>
         ))}
